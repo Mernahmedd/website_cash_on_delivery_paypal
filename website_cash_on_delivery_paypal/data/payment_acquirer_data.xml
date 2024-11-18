@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="payment_provider_cod_paypal" model="payment.provider">
+            <field name="name">Cash on Delivery Paypal</field>
+            <field name="image_128" type="base64" file="website_cash_on_delivery_paypal/static/src/img/paypal.png"/>
+            <field name="code">cod_paypal</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="redirect_form_view_id" ref="cod_paypal_acquirer_button"/>
+            <field name="pre_msg"><![CDATA[<p>Cash on Delivery Paypal Payment Method.</p>]]>
+            </field>
+        </record>
+
+         <record id="payment_method_cod_paypal" model="account.payment.method">
+            <field name="name">COD Paypal</field>
+            <field name="code">cod_paypal</field>
+            <field name="payment_type">inbound</field>
+        </record>
+
+        <record id="payment_method_COD_paypal" model="payment.method">
+            <field name="name">Cash on Delivery</field>
+            <field name="provider_ids" eval="[(4, ref('website_cash_on_delivery_paypal.payment_provider_cod_paypal'))]"/>
+            <field name="code">COD</field>
+            <field name="sequence">1000</field>
+            <field name="active">True</field>
+            <field name="image" type="base64" file="website_cash_on_delivery_paypal/static/src/img/paypal.png"/>
+            <field name="support_tokenization">False</field>
+            <field name="support_refund"></field>
+        </record>
+        
+        <record id="product_product_fees" model="product.template">
+            <field name="name">Discount</field>
+            <field name="website_published" eval="False"/>
+            <field name="type">service</field>
+            <field name="taxes_id" eval="False"/>
+            <field name="supplier_taxes_id" eval="False"/>
+            <field name="description_sale">Discount</field>
+        </record>
+
+    </data>
+</odoo>
