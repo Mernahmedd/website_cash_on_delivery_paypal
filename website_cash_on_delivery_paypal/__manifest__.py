@@ -20,7 +20,7 @@
     "auto_install": False,
     'installable': True,
     'license': 'OPL-1',
-    "images":['static/description/Banner.gif'],
+    "images":['static/description/banner.gif'],
     'assets':{
         'web.assets_frontend': [
             'website_cash_on_delivery_paypal/static/src/js/cod_payment.js',
